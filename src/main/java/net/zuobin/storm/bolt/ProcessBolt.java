@@ -37,6 +37,7 @@ public class ProcessBolt extends BaseRichBolt {
 
         boolean suc = true;
         try {
+            //前提是配置了SSH无密码登陆
             process = Runtime.getRuntime().exec("ssh "+ ip +" /usr/java/jdk1.7.0_79/bin/jps | grep \"\\(nimbus\\|core\\|drpc\\|supervisor\\|logviewer\\)\" | awk '{print $1 \"|\" $2 }'");
 
             //没有做异常处理,比如process的异常输出流造成的阻塞,
